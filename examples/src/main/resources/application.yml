@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: security-examples
+
+  # H2 인메모리 DB (데모용)
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+
+  h2:
+    console:
+      enabled: true       # /h2-console 접근 가능
+
+  # Redis 세션 — 로컬 개발 시 none으로 비활성화
+  session:
+    store-type: none       # redis로 변경 시 Redis 서버 필요
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
+server:
+  port: 8080
+
+# JWT 설정 (JwtSecurityConfig 활성화 시 사용)
+jwt:
+  secret: demo-secret-key-change-in-production-min-256-bits!!
+  expiration-ms: 3600000   # 1시간
